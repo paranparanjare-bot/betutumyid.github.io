@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <title>BR Bumbu Betutu | Bumbu Otentik Khas Bali & Siap Saji</title>
+    <meta name="description" content="Jual Bumbu Betutu BR asli Bali. Praktis, enak, halal, dan siap saji dalam 30 menit. Tanpa bahan pengawet. Hubungi 0895-4282-00700.">
+    <meta name="keywords" content="bumbu betutu, ayam betutu, bumbu bali, kuliner bali, resep ayam betutu, bumbu instan, BR bumbu betutu">
+    <meta name="author" content="BR Bumbu Betutu">
+    
+    <meta property="og:title" content="BR Bumbu Betutu - Rahasia Lezat Masakan Bali">
+    <meta property="og:description" content="Masak Ayam Betutu otentik di rumah cuma 30 menit! Klik untuk pesan.">
+    <meta property="og:image" content="https://i.imgur.com/XTJnPK0.png">
+    <meta property="og:url" content="https://brbumbubetutu.com">
+
+    <style>
+        /* ========== GLOBAL ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #fff9f0;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d3436;
+            --text-secondary: #666;
+            --accent-red: #ff6b35;
+            --accent-gold: #ffd700;
+            --card-bg: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #aaa;
+            --accent-red: #ff4d4d;
+            --accent-gold: #ffd700;
+            --card-bg: #252525;
+            --shadow: rgba(255,255,255,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            /* Menambah tekstur halus */
+            background-image: radial-gradient(var(--accent-red) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            background-blend-mode: overlay;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 1.5rem 0; }
+
+        /* ========== HEADER ========== */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 32px; background: var(--bg-secondary);
+            backdrop-filter: blur(10px); box-shadow: 0 4px 20px var(--shadow);
+            position: sticky; top: 0; z-index: 999; transition: all 0.3s ease;
+        }
+
+        .logo { display: flex; align-items: center; gap: 12px; animation: slideInLeft 0.6s ease; }
+
+        .logo-icon {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--accent-red), #ff8c42);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 28px; box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .logo h1 {
+            background: linear-gradient(135deg, var(--accent-red), #ff8c42);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-size: 24px; font-weight: 800; letter-spacing: -0.5px;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 16px; animation: slideInRight 0.6s ease; }
+
+        .theme-btn, .menu-btn {
+            background: var(--card-bg); border: 2px solid var(--accent-red);
+            width: 44px; height: 44px; border-radius: 12px; font-size: 20px;
+            cursor: pointer; color: var(--text-primary); display: flex;
+            align-items: center; justify-content: center; transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .theme-btn:hover, .menu-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+        }
+
+        /* ========== MOBILE MENU ========== */
+        .mobile-menu {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white; padding: 24px; position: fixed; top: 82px; left: 0; right: 0;
+            z-index: 998; transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .mobile-menu.hidden { transform: translateY(-150%); }
+        .mobile-menu ul { list-style: none; }
+        .mobile-menu li { opacity: 0; animation: fadeInUp 0.5s ease forwards; }
+        .mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu li:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-menu li:nth-child(3) { animation-delay: 0.3s; }
+        .mobile-menu li:nth-child(4) { animation-delay: 0.4s; }
+
+        .mobile-menu li a {
+            color: white; text-decoration: none; padding: 14px 0; display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; font-weight: 500;
+        }
+        .mobile-menu li a:hover { padding-left: 12px; color: var(--accent-gold); }
+
+        /* ========== HERO ========== */
+        .hero {
+            text-align: center; padding: 60px 20px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative; overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🌶️'; position: absolute; font-size: 200px; opacity: 0.05;
+            top: -50px; right: -50px; animation: float 6s ease-in-out infinite;
+        }
+
+        .hero h2 {
+            font-size: 32px; color: var(--text-primary); margin-bottom: 16px;
+            font-weight: 800; animation: fadeInUp 0.8s ease; line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px; color: var(--text-secondary); margin-bottom: 32px;
+            animation: fadeInUp 1s ease; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px;
+            animation: fadeInUp 1.2s ease; max-width: 400px; margin-left: auto; margin-right: auto;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #25d366, #20b358);
+            color: white; padding: 16px 28px; border-radius: 16px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-weight: 700; font-size: 16px; border: none; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); transition: all 0.3s ease;
+            position: relative; overflow: hidden;
+        }
+
+        .btn-green::before {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+            border-radius: 50%; background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s;
+        }
+        .btn-green:hover::before { width: 300px; height: 300px; }
+        .btn-green:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
+
+        .discount {
+            background: linear-gradient(135deg, var(--accent-gold), #ffed4e);
+            color: #000; padding: 10px 16px; border-radius: 12px; font-size: 14px;
+            font-weight: 800; display: inline-block; box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s ease infinite;
+        }
+
+        .btn-orange {
+            background: transparent; color: var(--accent-red); border: 3px solid var(--accent-red);
+            padding: 14px 28px; border-radius: 16px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-weight: 700; font-size: 16px; transition: all 0.3s ease;
+            position: relative; overflow: hidden;
+        }
+
+        .btn-orange::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--accent-red); transition: left 0.4s ease; z-index: -1;
+        }
+        .btn-orange:hover::before { left: 0; }
+        .btn-orange:hover { color: white; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4); }
+
+        /* ========== RATING ========== */
+        .rating-section {
+            text-align: center; padding: 24px; background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            box-shadow: 0 2px 10px var(--shadow); animation: fadeIn 1s ease;
+        }
+        .stars { font-size: 20px; color: var(--accent-gold); animation: twinkle 2s ease infinite; }
+        .rating-section span { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+
+        /* ========== WHY US ========== */
+        .why-us { padding: 60px 20px; background: var(--bg-secondary); text-align: center; }
+        
+        .product-showcase { max-width: 600px; margin: 0 auto 40px; animation: fadeInUp 1s ease; }
+        .product-image {
+            width: 100%; height: auto; border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.25); transition: all 0.4s ease;
+            border: 4px solid transparent;
+        }
+        .product-image:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.4); border-color: var(--accent-red);
+        }
+
+        .why-us h2 {
+            font-size: 32px; margin-bottom: 12px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .why-us > p { color: var(--text-secondary); margin-bottom: 40px; font-size: 16px; }
+
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 32px; }
+
+        .feature {
+            text-align: center; padding: 32px 24px; background: var(--card-bg);
+            border-radius: 20px; box-shadow: 0 8px 24px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .feature::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+            transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .feature:hover::before { transform: scaleX(1); }
+        .feature:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 16px 40px rgba(255, 107, 53, 0.3); }
+
+        .feature-icon { font-size: 48px; margin-bottom: 16px; display: inline-block; animation: bounce 2s ease infinite; }
+        .feature h3 { font-size: 18px; color: var(--text-primary); margin-top: 12px; font-weight: 700; }
+
+        /* ========== COOKING GUIDE ========== */
+        .cooking-guide { padding: 60px 20px; background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary)); }
+        
+        .cooking-guide h2 {
+            font-size: 32px; text-align: center; margin-bottom: 12px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .cooking-guide > p { text-align: center; color: var(--text-secondary); margin-bottom: 48px; }
+
+        .step {
+            background: var(--card-bg); padding: 32px 28px; border-radius: 20px;
+            margin: 50px auto 20px; max-width: 600px; box-shadow: 0 8px 24px var(--shadow);
+            position: relative; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+        }
+        .step:hover {
+            transform: translateY(-8px) scale(1.02); box-shadow: 0 16px 40px rgba(255, 107, 53, 0.25);
+            border-color: var(--accent-red);
+        }
+
+        .step-number {
+            position: absolute; top: -35px; left: 50%; transform: translateX(-50%);
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, var(--accent-red), #cc0000);
+            color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 28px; font-weight: 900; border: 4px solid var(--accent-gold);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .step h3 { margin-bottom: 12px; color: var(--text-primary); font-size: 20px; font-weight: 700; margin-top: 15px; text-align: center; }
+        .step p { color: var(--text-secondary); line-height: 1.8; text-align: center; }
+
+        /* ========== ORDER & MARKETPLACE ========== */
+        .order-guide, .marketplace { padding: 60px 20px; background: var(--bg-secondary); text-align: center; }
+        
+        .order-guide h2, .marketplace h2 {
+            font-size: 32px; margin-bottom: 12px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .order-guide > p, .marketplace > p { color: var(--text-secondary); margin-bottom: 40px; }
+
+        .order-step, .platform-card {
+            margin: 30px auto; max-width: 500px; padding: 32px 24px;
+            background: var(--card-bg); border-radius: 20px; box-shadow: 0 8px 24px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid transparent;
+        }
+        .order-step:hover, .platform-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 16px 48px rgba(255, 107, 53, 0.3); border-color: var(--accent-red);
+        }
+
+        .buy-link {
+            color: var(--accent-red); text-decoration: none; font-weight: 700;
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+            padding: 10px 20px; border: 2px solid var(--accent-red); border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .buy-link:hover { background: var(--accent-red); color: white; transform: translateX(4px); }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e, #16213e); color: white;
+            padding: 48px 20px 24px; text-align: center;
+        }
+
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+        .footer-logo-icon {
+            width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-red), #ff8c42);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px;
+        }
+        .footer-logo h3 { color: white; font-size: 24px; font-weight: 800; }
+
+        footer > p { max-width: 600px; margin: 0 auto 24px; color: #ccc; line-height: 1.8; }
+        
+        .footer-contact a {
+            font-size: 24px; color: white; font-weight: bold; text-decoration: none;
+            display: inline-block; transition: transform 0.3s ease; margin-bottom: 20px;
+        }
+        .footer-contact a:hover { transform: scale(1.05); color: var(--accent-gold); }
+
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 28px 0; }
+        .footer-links a { color: #ccc; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--accent-gold); }
+
+        .copyright {
+            font-size: 14px; color: #888; margin-top: 28px; padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .copyright a { color: var(--accent-red); text-decoration: none; font-weight: 600; }
+
+        /* ========== CHAT ========== */
+        .chat-btn {
+            position: fixed; bottom: 24px; right: 24px; width: 68px; height: 68px;
+            border-radius: 50%; background: linear-gradient(135deg, #25d366, #20b358);
+            color: white; font-size: 32px; border: none; cursor: pointer;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); display: flex;
+            align-items: center; justify-content: center; z-index: 999;
+            transition: all 0.3s ease; animation: pulse 2s ease infinite;
+        }
+        .chat-btn:hover { transform: scale(1.15); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6); }
+
+        .chat-modal {
+            position: fixed; bottom: 110px; right: 24px; width: 360px; max-width: calc(100vw - 48px);
+            background: var(--bg-secondary); border-radius: 20px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.3); display: flex; flex-direction: column;
+            z-index: 1000; overflow: hidden;
+            animation: slideInUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .chat-modal.hidden { display: none; }
+
+        .chat-header {
+            padding: 16px 20px; background: linear-gradient(135deg, var(--accent-red), #ff8c42);
+            color: white; display: flex; justify-content: space-between; align-items: center;
+        }
+        .chat-header h3 { font-size: 16px; font-weight: 700; }
+
+        #closeChatBtn {
+            background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px;
+            border-radius: 50%; font-size: 24px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; transition: all 0.3s ease;
+        }
+        #closeChatBtn:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg); }
+
+        .chat-messages {
+            padding: 16px; height: 280px; overflow-y: auto; background: var(--bg-primary);
+            display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .chat-messages .bot, .chat-messages .user {
+            padding: 12px 16px; border-radius: 16px; max-width: 85%;
+            animation: messageSlide 0.3s ease; line-height: 1.5; font-size: 14px;
+        }
+        .chat-messages .bot {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0); color: #333;
+            align-self: flex-start; border-bottom-left-radius: 4px;
+        }
+        [data-theme="dark"] .chat-messages .bot {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a); color: #f5f5f5;
+        }
+        .chat-messages .user {
+            background: linear-gradient(135deg, var(--accent-red), #ff8c42); color: white;
+            align-self: flex-end; border-bottom-right-radius: 4px;
+        }
+
+        .chat-input { display: flex; padding: 12px; border-top: 2px solid var(--accent-red); background: var(--bg-secondary); }
+        .chat-input input {
+            flex: 1; padding: 12px 16px; border: 2px solid #ddd; border-radius: 12px;
+            background: var(--bg-primary); color: var(--text-primary); font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .chat-input input:focus { outline: none; border-color: var(--accent-red); }
+        .chat-input button {
+            margin-left: 8px; padding: 12px 20px; background: linear-gradient(135deg, var(--accent-red), #ff8c42);
+            color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .chat-input button:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4); }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+        @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.1); } }
+        @keyframes popIn { 0% { transform: translateX(-50%) scale(0); } 60% { transform: translateX(-50%) scale(1.2); } 100% { transform: translateX(-50%) scale(1); } }
+        @keyframes messageSlide { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 26px; }
+            .hero p { font-size: 16px; }
+            .why-us h2, .cooking-guide h2, .order-guide h2, .marketplace h2 { font-size: 26px; }
+            header { padding: 12px 20px; }
+        }
+        @media (max-width: 480px) {
+            .chat-modal { width: calc(100vw - 32px); right: 16px; }
+        }
+
+        /* ========== SCROLL REVEAL ========== */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🌶️</div>
+            <h1>BR Bumbu Betutu</h1>
+        </div>
+        <div class="header-actions">
+            <button id="themeToggle" class="theme-btn">🌙</button>
+            <button id="menuToggle" class="menu-btn">☰</button>
+        </div>
+    </header>
+
+    <nav id="mobileMenu" class="mobile-menu hidden">
+        <ul>
+            <li><a href="#cara-masak">Cara Masak</a></li>
+            <li><a href="#pemesanan">Cara Pemesanan</a></li>
+            <li><a href="#marketplace">Marketplace</a></li>
+            <li><a href="#kontak">Kontak Kami</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h2>Betutu Khas Bali untuk Keluarga Indonesia</h2>
+        <p>Rasakan kelezatan ayam betutu otentik dengan BR Bumbu Betutu. Dibuat dari rempah alami pilihan, dan siap saji kurang dari 30 menit!</p>
+        
+        <div class="cta-buttons">
+            <a href="https://wa.me/62895428200700?text=Halo%20BR%2C%20saya%20tertarik%20pesan%20bumbu%20betutu" class="btn-green">
+                <span style="font-size:20px; margin-right:8px;">📱</span> Pesan via WhatsApp
+            </a>
+            <span class="discount">🔥 Promo Spesial Hari Ini!</span>
+        </div>
+        
+        <a href="#marketplace" class="btn-orange">
+            🛍️ Beli di Marketplace
+        </a>
+    </section>
+
+    <div class="rating-section">
+        <div class="stars">★★★★★</div>
+        <span>4.9 dari 842 ulasan</span>
+    </div>
+
+    <section class="why-us reveal">
+        <div class="product-showcase">
+            <img src="https://i.imgur.com/XTJnPK0.png" alt="BR Bumbu Betutu Product" class="product-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=BR+Bumbu+Betutu+Asli';">
+        </div>
+        
+        <h2>KENAPA PILIH BR BUMBU BETUTU?</h2>
+        <p>Menghadirkan cita rasa Betutu otentik dalam kemasan praktis.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🌿</div>
+                <h3>Rempah Alami</h3>
+                <p style="font-size:14px; margin-top:8px">Tanpa bahan pengawet buatan.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Masak Cepat</h3>
+                <p style="font-size:14px; margin-top:8px">Hanya 30 menit langsung jadi.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏝️</div>
+                <h3>Resep Otentik</h3>
+                <p style="font-size:14px; margin-top:8px">Warisan rasa asli Bali.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cara-masak" class="cooking-guide reveal">
+        <h2>CARA MASAK MUDAH</h2>
+        <p>Ikuti langkah ini untuk hasil maksimal</p>
+        
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Siapkan Bahan</h3>
+            <p>Siapkan 1kg ayam/bebek/daging bersih. Gunakan 2 sachet Bumbu BR (1 sachet untuk 0.5kg).</p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Campur Rata</h3>
+            <p>Campurkan daging dengan bumbu BR dan tambahkan air secukupnya (kurang lebih 1 gelas).</p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Proses Masak</h3>
+            <p>Ungkep dengan api sedang selama 20-30 menit hingga air menyusut dan bumbu meresap.</p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Sajikan</h3>
+            <p>Ayam Betutu siap disantap! Nikmat disajikan dengan nasi hangat dan plecing kangkung.</p>
+        </div>
+    </section>
+
+    <section id="pemesanan" class="order-guide reveal">
+        <h2>CARA PEMESANAN</h2>
+        <p>Sangat mudah, pilih metode yang Anda suka</p>
+        
+        <div class="order-step">
+            <div style="font-size:48px;margin-bottom:10px;">💬</div>
+            <h3>Hubungi WhatsApp</h3>
+            <p>Chat admin kami untuk tanya stok dan ongkir termurah.</p>
+        </div>
+        
+        <div class="order-step">
+            <div style="font-size:48px;margin-bottom:10px;">📦</div>
+            <h3>Pilih Produk</h3>
+            <p>Tentukan jumlah bumbu. Kami kirim ke seluruh Indonesia.</p>
+        </div>
+    </section>
+
+    <section id="marketplace" class="marketplace reveal">
+        <h2>BELANJA DI MARKETPLACE</h2>
+        <p>Lebih aman dan banyak promo gratis ongkir</p>
+        
+        <div class="platform-card">
+            <div style="font-size:56px;margin-bottom: 10px;">🎵</div>
+            <h3>TikTok Shop</h3>
+            <p>Belanja saat live diskon besar!</p>
+            <a href="https://tiktok.com/@brbumbubetutu" target="_blank" class="buy-link">Beli di TikTok →</a>
+        </div>
+        
+        <div class="platform-card">
+            <div style="font-size:56px;margin-bottom:10px;">👜</div>
+            <h3>Shopee</h3>
+            <p>Manfaatkan voucher gratis ongkir.</p>
+            <a href="https://shopee.co.id/brbumbubetutu" target="_blank" class="buy-link">Beli di Shopee →</a>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <div class="footer-logo">
+            <div class="footer-logo-icon">🌶️</div>
+            <h3>BR Bumbu Betutu</h3>
+        </div>
+        <p>Bumbu Betutu praktis untuk keluarga Indonesia. Rasakan kelezatan ayam betutu otentik dengan kemasan praktis.</p>
+        
+        <div class="footer-contact">
+            <a href="https://wa.me/62895428200700" target="_blank">📞 +62 895-4282-00700</a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#cara-masak">Cara Masak</a>
+            <a href="#pemesanan">Cara Pemesanan</a>
+            <a href="#marketplace">Marketplace</a>
+        </div>
+        
+        <div class="copyright">
+            ©2026 BR Bumbu Betutu. Hak cipta dilindungi undang-undang.<br>
+            Customer Care: <a href="https://wa.me/62895428200700">Chat WhatsApp</a>
+        </div>
+    </footer>
+
+    <button id="openChatBtn" class="chat-btn">💬</button>
+
+    <div id="chatModal" class="chat-modal hidden">
+        <div class="chat-header">
+            <h3>Tanya CS BR Betutu</h3>
+            <button id="closeChatBtn">&times;</button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <p class="bot">Halo! 👋 Ada yang bisa saya bantu tentang <b>cara masak</b>, <b>harga</b>, atau <b>ongkir</b>?</p>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ketik pertanyaan..." />
+            <button id="sendBtn">Kirim</button>
+        </div>
+    </div>
+
+    <script>
+        // ===== STATE MANAGEMENT =====
+        let appState = {
+            theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        };
+
+        // ===== DARK MODE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        function updateTheme() {
+            body.setAttribute('data-theme', appState.theme);
+            themeToggle.textContent = appState.theme === 'dark' ? '☀️' : '🌙';
+        }
+        updateTheme();
+
+        themeToggle.addEventListener('click', () => {
+            appState.theme = appState.theme === 'dark' ? 'light' : 'dark';
+            updateTheme();
+        });
+
+        // ===== MOBILE MENU =====
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.mobile-menu') && !e.target.closest('.menu-btn')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ===== CHATBOX CERDAS =====
+        const openChatBtn = document.getElementById('openChatBtn');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatModal = document.getElementById('chatModal');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Database Respon Bot
+        const botKnowledge = [
+            {
+                keywords: ['cara masak', 'resep', 'bikin', 'masaknya'],
+                response: '👨‍🍳 <b>Cara Masak:</b><br>1. Siapkan 1kg ayam.<br>2. Pakai 2 sachet Bumbu BR.<br>3. Tambah air, masak 30 menit sampai meresap.<br>Praktis kan?'
+            },
+            {
+                keywords: ['harga', 'price', 'biaya', 'jual'],
+                response: '💰 Untuk info harga promo dan paket reseller, chat WA kami ya: <a href="https://wa.me/62895428200700" style="color:#25d366;font-weight:bold;">Klik Chat WA</a>'
+            },
+            {
+                keywords: ['tahan', 'lama', 'expired', 'kadaluarsa', 'basi'],
+                response: '🛡️ <b>Ketahanan:</b><br>Suhu ruang: 6 Bulan.<br>Kulkas: 1 Tahun.<br>Dikemas vakum steril tanpa pengawet.'
+            },
+            {
+                keywords: ['ongkir', 'kirim', 'pengiriman', 'lokasi'],
+                response: '🚚 Kami kirim dari Banyuwangi ke seluruh Indonesia. Cek ongkir via WA ya: <a href="https://wa.me/62895428200700" style="color:#25d366;">Cek Ongkir</a>'
+            },
+            {
+                keywords: ['pedas', 'rasa', 'enak'],
+                response: '🌶️ Rasanya pedas gurih otentik khas Bali! Rempahnya terasa banget. Wajib coba kak!'
+            }
+        ];
+
+        openChatBtn.addEventListener('click', () => {
+            chatModal.classList.remove('hidden');
+            userInput.focus();
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            chatModal.classList.add('hidden');
+        });
+
+        function addMessage(text, sender) {
+            const msg = document.createElement('p');
+            msg.classList.add(sender);
+            msg.innerHTML = text;
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+            
+            // Mencari kecocokan kata kunci
+            for (let item of botKnowledge) {
+                if (item.keywords.some(key => lowerInput.includes(key))) {
+                    return item.response;
+                }
+            }
+            
+            // Jawaban Default
+            return 'Maaf saya bot otomatis. Untuk pertanyaan detail, silakan chat admin asli di: <a href="https://wa.me/62895428200700" style="color:#25d366; font-weight:bold;">WhatsApp Admin</a>';
+        }
+
+        async function sendMessage() {
+            const msg = userInput.value.trim();
+            if (!msg) return;
+
+            addMessage(msg, 'user');
+            userInput.value = '';
+
+            setTimeout(() => {
+                const reply = getBotResponse(msg);
+                addMessage(reply, 'bot');
+            }, 600);
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+</body>
+</html>
+
