@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BR Bumbu Betutu - Premium Bali Heritage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo">
+        <div class="logo-container">
             <img src="images/logo.png" alt="Logo BR Bumbu Betutu" class="header-logo">
-            <div class="logo-text">BR BUMBU BETUTU</div>
         </div>
-        <nav>
-            <a href="#marketplace" class="btn-red-small">Beli Sekarang</a>
-        </nav>
+
+        <div class="header-brand-name">BR BUMBU BETUTU</div>
     </header>
 
     <main>
         <section class="hero">
-            <h1>Betutu Khas Bali untuk Keluarga Indonesia</h1>
-            <p>Dibuat dari rempah alami pilihan, siap saji kurang dari 30 menit. Hadirkan kemewahan rasa otentik Bali di rumah Anda.</p>
             
-            <div class="hero-image-container">
-                <img src="images/produk-betutu.png" alt="Premium BR Bumbu Betutu" class="product-image-hero">
+            <div class="swiper mySwiper hero-carousel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/01.jpg" alt="Galeri Bumbu Betutu 1" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/02.jpg" alt="Galeri Bumbu Betutu 2" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/03.jpg" alt="Galeri Bumbu Betutu 3" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/04.jpg" alt="Galeri Bumbu Betutu 4" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/05.jpg" alt="Galeri Bumbu Betutu 5" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/06.jpg" alt="Galeri Bumbu Betutu 6" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/07.jpg" alt="Galeri Bumbu Betutu 7" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/08.jpg" alt="Galeri Bumbu Betutu 8" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/09.jpg" alt="Galeri Bumbu Betutu 9" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/10.jpg" alt="Galeri Bumbu Betutu 10" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/11.jpg" alt="Galeri Bumbu Betutu 11" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/12.jpg" alt="Galeri Bumbu Betutu 12" class="carousel-img"></div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
 
+            <h1 class="hero-title">Betutu Khas Bali untuk Keluarga Indonesia</h1>
+            
+            <p class="hero-desc">Dibuat dari rempah alami pilihan, siap saji kurang dari 30 menit. Hadirkan kemewahan rasa otentik Bali di rumah Anda.</p>
+            
             <div class="hero-cta">
-                <a href="https://wa.me/62895428200700?text=Halo%20Admin%20Bumbu%20BR,%20saya%20butuh%20bantuan%20mengenai%20produk%20ini." class="btn-gold">
-                    <span>📱</span> 
-                    <div class="btn-text">
+                <a href="https://wa.me/62895428200700?text=Halo%20Admin%20Bumbu%20BR,%20saya%20butuh%20bantuan%20mengenai%20produk%20ini." class="btn-cta-blue">
+                    <div class="btn-text" style="margin-left: 0;">
                         <span class="btn-maintext">Customer Service</span>
                     </div>
                 </a>
@@ -42,27 +56,27 @@
             
             <div class="info-container">
                 <div class="info-visual">
-                    <img src="images/sachet.png" alt="Kemasan Sachet BR" class="sachet-img">
+                    <div class="dual-images-container">
+                        <img src="images/produk-betutu.png" alt="Ayam Betutu Utuh" class="dual-img main-betutu">
+                        <img src="images/sachet.png" alt="Kemasan Sachet BR" class="dual-img sachet-betutu">
+                    </div>
                     <p class="sachet-caption">Kemasan praktis, rasa tetap otentik.</p>
                 </div>
 
                 <div class="info-grid">
                     <div class="card">
-                        <div class="card-icon">🌿</div>
                         <div class="card-content">
                             <h3>Rempah Alami</h3>
                             <p>Menggunakan rempah berkualitas dan bahan segar.</p>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">⚡</div>
                         <div class="card-content">
                             <h3>Cepat & Mudah</h3>
                             <p>Cukup 30 menit untuk hidangan kelas restoran.</p>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🏆</div>
                         <div class="card-content">
                             <h3>Kualitas Premium</h3>
                             <p>Resep asli Bali yang dijamin kelezatannya.</p>
@@ -105,11 +119,15 @@
 </p>
             <div class="footer-bottom">
                 <p>&copy; 2026 BR Bumbu Betutu - Premium Bali Heritage.</p>
-                <p class="contact-text">Customer Care: <nav><a href="https://wa.me/62895428200700?text=Halo%20Admin." target="_blank" class="logo-text">+62 895-4282-00700</a></nav></p>
+                <div class="contact-area">
+                    <span class="contact-label">Customer Care:</span>
+                    <a href="https://wa.me/62895428200700?text=Halo%20Admin." target="_blank" class="footer-phone-btn">+62 895-4282-00700</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
