@@ -131,9 +131,26 @@ header {
 .info-visual { flex: 1; min-width: 300px; }
 .info-grid { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1.5rem; }
 
-.dual-images-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1rem; }
-.dual-img { width: 48%; max-width: 250px; height: auto; border-radius: 1rem; border: 1px solid var(--accent-gold); }
-.main-betutu { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+/* REVISI: GAMBAR GANDA ATAS BAWAH */
+.dual-images-container {
+    display: flex;
+    flex-direction: column; /* Mengubah arah flex menjadi kolom */
+    justify-content: center;
+    align-items: center;
+    /* gap: 15px; Dihapus, diganti margin pada gambar pertama */
+    margin-bottom: 1rem;
+}
+.dual-img {
+    width: 100%; /* Lebar penuh dalam container */
+    max-width: 350px; /* Batas lebar maksimal untuk gambar */
+    height: auto;
+    border-radius: 1rem;
+    border: 1px solid var(--accent-gold);
+}
+.main-betutu { 
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px; /* Memberi jarak di bawah gambar pertama */
+}
 .sachet-betutu { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1)); }
 .sachet-caption { margin-top: 0.5rem; color: var(--accent-gold); font-style: italic; font-size: 0.9rem;}
 
