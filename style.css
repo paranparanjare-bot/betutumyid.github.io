@@ -117,9 +117,9 @@ header {
 /* Cari bagian ini di style.css dan GANTI dengan yang baru ini */
 .sachet-betutu {
     width: 25%; max-width: 180px; z-index: 2;
-    bottom: 20px;
+    bottom: 40px;
     /* Ubah nilai right agar lebih ke kiri (semakin besar angka, semakin ke kiri) */
-    right: 50%; 
+    right: 60%; 
     /* Border merah dihapus */
     border: none; 
     /* Opsional: Tambah sedikit bayangan agar lebih 'pop-up' tanpa border */
