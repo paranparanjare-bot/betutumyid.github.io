@@ -55,5 +55,5 @@ document.querySelectorAll('.reveal').forEach(section => {
 window.addEventListener('load', () => {
     // Sesuaikan kecepatan di sini: 
     // 20 = Cepat, 40 = Sedang, 70 = Lambat
-    startAutoScroll(40); 
+    startAutoScroll(20); 
 });
