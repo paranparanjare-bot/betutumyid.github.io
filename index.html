@@ -1,44 +1,117 @@
-/* ========== FLOATING BUTTON ========== */
-.btn-floating-cs {
-    position: fixed;         /* Membuat elemen tetap di layar saat scroll */
-    bottom: 30px;            /* Jarak dari bawah layar */
-    right: 30px;             /* Jarak dari kanan layar */
-    z-index: 9999;           /* Pastikan selalu di atas elemen lain */
-    
-    background: linear-gradient(135deg, #25d366, #128c7e); /* Warna Hijau WA */
-    color: white;
-    text-decoration: none;
-    
-    padding: 15px 25px;      /* Ukuran tombol */
-    border-radius: 50px;     /* Membuat bentuk kapsul */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4); /* Efek bayangan */
-    
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: floatPulse 2s infinite; /* Animasi denyut halus */
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR Bumbu Betutu - Premium Bali Heritage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo BR Bumbu Betutu" class="header-logo">
+        </div>
+        <div class="header-brand-name">BR BUMBU BETUTU</div>
+    </header>
 
-.btn-floating-cs:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-}
+    <main>
+        <section class="hero">
+            <div class="swiper mySwiper hero-carousel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/01.jpg" alt="Galeri 1" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/02.jpg" alt="Galeri 2" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/03.jpg" alt="Galeri 3" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/04.jpg" alt="Galeri 4" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="images/05.jpg" alt="Galeri 5" class="carousel-img"></div>
+                    </div>
+                <div class="swiper-pagination"></div>
+            </div>
 
-/* Animasi agar tombol terlihat hidup */
-@keyframes floatPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
+            <h1 class="hero-title">Betutu Khas Bali untuk Keluarga Indonesia</h1>
+            
+            <p class="hero-desc">Dibuat dari rempah alami pilihan, siap saji kurang dari 30 menit. Hadirkan kemewahan rasa otentik Bali di rumah Anda.</p>
+            
+            </section>
 
-/* Penyesuaian untuk HP (Mobile) agar tidak menutupi konten penting */
-@media (max-width: 480px) {
-    .btn-floating-cs {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
-}
+        <section id="cara-masak" class="reveal">
+            <h2 class="section-title">Kenapa Pilih BR Bumbu Betutu?</h2>
+            
+            <div class="info-container">
+                <div class="info-visual">
+                    <div class="dual-images-container">
+                        <img src="images/produk-betutu.png" alt="Ayam Betutu Utuh" class="dual-img main-betutu">
+                        <img src="images/sachet.png" alt="Kemasan Sachet BR" class="dual-img sachet-betutu">
+                    </div>
+                    <p class="sachet-caption">Kemasan praktis, rasa tetap otentik.</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Rempah Alami</h3>
+                            <p>Menggunakan rempah berkualitas dan bahan segar.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Cepat & Mudah</h3>
+                            <p>Cukup 30 menit untuk hidangan kelas restoran.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Kualitas Premium</h3>
+                            <p>Resep asli Bali yang dijamin kelezatannya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="marketplace" class="reveal">
+            <h2 class="section-title">Order disini</h2>
+            <div class="marketplace-grid">
+                <div class="card-market">
+                    <h3 style="color: #94a4ff;">WhatsApp</h3>
+                    <a href="https://wa.me/62895428200700?text=Halo%20Admin%20Bumbu%20BR,%20saya%20tertarik%20pesan." target="_blank" class="btn-gold-market">Order via WhatsApp</a>
+                </div>
+                <div class="card-market">
+                    <h3 style="color: #ee4d2d;">Shopee</h3>
+                    <a href="https://s.shopee.co.id/8KiBaBJMYN" target="_blank" class="btn-gold-market">Beli di Shopee</a>
+                </div>
+                <div class="card-market">
+                    <h3 style="color: #ff7ce9;">TikTok Shop</h3>
+                    <a href="https://vt.tokopedia.com/t/ZSHT7wdvwnCdC-jFm69/" target="_blank" class="btn-gold-market">Beli di TikTok</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="gold-text">CARA MASAK</h3>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto; color: #ccc;">
+                <ol style="padding-left: 20px; line-height: 1.8;">
+                  <li>Masukkan daging ayam, bebek, ikan laut atau daging ke wajan.</li>
+                  <li>Masukkan 1 sachet Bumbu BR Ayam Betutu (75 gr bumbu untuk 0,5 kg daging).</li>
+                  <li>Tambah air secukupnya lalu aduk hingga bumbu tercampur rata.</li>
+                  <li>Masak dengan cara direbus kurang lebih 15-30 menit hingga matang dan bumbu meresap.</li>
+                  <li>Koreksi rasa, tambahkan garam jika perlu, masakan betutu siap dihidangkan.</li>
+                </ol>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BR Bumbu Betutu - Premium Bali Heritage.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/62895428200700?text=Halo%20Admin%20Bumbu%20BR,%20saya%20butuh%20bantuan%20mengenai%20produk%20ini." class="btn-floating-cs" target="_blank">
+        <span style="font-size: 1.5rem; margin-right: 10px;">📱</span>
+        <span>Customer Service</span>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
