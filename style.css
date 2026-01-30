@@ -1,44 +1,197 @@
-/* ========== FLOATING BUTTON ========== */
+/* ========== 1. VARIABLE & RESET ========== */
+:root {
+    --bg-dark: #0f0f0f;      /* Latar belakang utama (Hitam) */
+    --card-dark: #1a1a1a;    /* Latar belakang kartu (Abu Gelap) */
+    --accent-red: #b91c1c;   /* Merah Crimson */
+    --accent-gold: #d4af37;  /* Emas Klasik */
+    --text-gold: #f3e5ab;    /* Emas Muda untuk teks */
+    --text-white: #ffffff;   /* Putih */
+    --text-grey: #a3a3a3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+    text-align: center;
+    overflow-x: hidden; /* Mencegah scroll samping */
+}
+
+/* ========== 2. HEADER ========== */
+header {
+    position: fixed; width: 100%; top: 0; z-index: 100;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 10px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo-container { display: flex; align-items: center; }
+.header-logo { height: 45px; width: auto; transition: transform 0.3s; }
+.header-logo:hover { transform: scale(1.1); }
+
+.header-brand-name {
+    font-weight: 800; color: var(--accent-gold);
+    letter-spacing: 1px; font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* ========== 3. HERO SECTION (Carousel & Intro) ========== */
+.hero {
+    padding-top: 100px; /* Memberi jarak karena header fixed */
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Styling untuk Carousel Swiper */
+.hero-carousel {
+    width: 100%;
+    max-width: 800px; /* Batas lebar carousel */
+    height: 300px;    /* Tinggi carousel (bisa disesuaikan) */
+    margin: 0 auto 30px auto; /* Tengah & jarak bawah */
+    border-radius: 15px;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex; justify-content: center; align-items: center;
+    background: #000;
+}
+
+.carousel-img {
+    width: 100%; height: 100%; object-fit: cover; /* Gambar memenuhi kotak */
+}
+
+/* Teks Hero */
+.hero-title {
+    font-size: 2.2rem; color: var(--accent-gold);
+    margin-bottom: 1rem; font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-desc {
+    max-width: 700px; margin: 0 auto 2rem auto;
+    color: var(--text-gold); font-size: 1.1rem;
+}
+
+/* ========== 4. BAGIAN FITUR (Kenapa Pilih Kami) ========== */
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.section-title {
+    color: var(--accent-gold); margin-bottom: 3rem;
+    font-size: 2rem; border-bottom: 1px solid #333;
+    display: inline-block; padding-bottom: 10px;
+}
+
+.info-container {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    align-items: flex-start; gap: 40px;
+    max-width: 1100px; margin: 0 auto; padding: 0 20px;
+}
+
+.info-visual { flex: 1; min-width: 300px; }
+
+.dual-images-container {
+    position: relative; height: 350px; display: flex; justify-content: center;
+}
+
+.dual-img {
+    border-radius: 1rem; position: absolute;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.main-betutu {
+    width: 80%; max-width: 300px; z-index: 1;
+    border: 2px solid var(--accent-gold); top: 0;
+}
+.sachet-betutu {
+    width: 50%; max-width: 180px; z-index: 2;
+    bottom: 20px; right: 10%;
+    border: 2px solid var(--accent-red);
+}
+
+.sachet-caption {
+    margin-top: 10px; color: var(--accent-gold); font-style: italic; font-size: 0.9rem;
+}
+
+.info-grid {
+    flex: 1; min-width: 300px;
+    display: flex; flex-direction: column; gap: 1.5rem;
+}
+
+/* ========== 5. KARTU (Cards) ========== */
+.card {
+    background: var(--card-dark); padding: 1.5rem;
+    border-radius: 1rem; border: 1px solid #333;
+    text-align: left; transition: transform 0.3s;
+}
+.card:hover { border-color: var(--accent-gold); transform: translateX(5px); }
+
+.card-content h3 { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 5px; }
+.card-content p { font-size: 0.95rem; color: #ccc; margin: 0; }
+
+/* ========== 6. MARKETPLACE ========== */
+.marketplace-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 20px;
+}
+
+.card-market {
+    background: var(--card-dark); padding: 2rem;
+    border-radius: 1rem; border: 1px solid #333;
+}
+
+.btn-gold-market {
+    background: linear-gradient(135deg, var(--accent-gold), #aa8a2e);
+    color: #000; text-decoration: none; padding: 0.7rem 1.5rem;
+    border-radius: 8px; font-weight: 700; display: inline-block;
+    margin-top: 1rem; transition: 0.3s;
+}
+.btn-gold-market:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+/* ========== 7. FOOTER ========== */
+footer {
+    padding: 50px 20px; border-top: 1px solid #333;
+    background: #0a0a0a; margin-top: 80px;
+}
+.gold-text { color: var(--accent-gold); margin-bottom: 1rem; letter-spacing: 1px; }
+.footer-bottom { margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; font-size: 0.85rem; color: #666; }
+
+/* ========== 8. TOMBOL FLOATING (CS) ========== */
 .btn-floating-cs {
-    position: fixed;         /* Membuat elemen tetap di layar saat scroll */
-    bottom: 30px;            /* Jarak dari bawah layar */
-    right: 30px;             /* Jarak dari kanan layar */
-    z-index: 9999;           /* Pastikan selalu di atas elemen lain */
-    
-    background: linear-gradient(135deg, #25d366, #128c7e); /* Warna Hijau WA */
-    color: white;
-    text-decoration: none;
-    
-    padding: 15px 25px;      /* Ukuran tombol */
-    border-radius: 50px;     /* Membuat bentuk kapsul */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4); /* Efek bayangan */
-    
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: floatPulse 2s infinite; /* Animasi denyut halus */
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white; text-decoration: none;
+    padding: 12px 24px; border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 800; font-size: 1rem;
+    transition: transform 0.3s ease;
+    animation: floatPulse 2s infinite;
 }
 
-.btn-floating-cs:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-}
+.btn-floating-cs:hover { transform: scale(1.05) translateY(-5px); }
 
-/* Animasi agar tombol terlihat hidup */
 @keyframes floatPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* Penyesuaian untuk HP (Mobile) agar tidak menutupi konten penting */
-@media (max-width: 480px) {
-    .btn-floating-cs {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
+/* ========== 9. RESPONSIVE (HP) ========== */
+@media (max-width: 768px) {
+    .info-container { flex-direction: column; align-items: center; }
+    .dual-images-container { height: 300px; margin-bottom: 20px; }
+    .hero-title { font-size: 1.8rem; }
+    .btn-floating-cs { bottom: 20px; right: 20px; padding: 10px 20px; font-size: 0.9rem; }
 }
