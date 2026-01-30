@@ -116,7 +116,7 @@ header {
 }
 /* Cari bagian ini di style.css dan GANTI dengan yang baru ini */
 .sachet-betutu {
-    width: 25%; max-width: 180px; z-index: 2;
+    width: 75%; max-width: 180px; z-index: 2;
     bottom: 40px;
     /* Ubah nilai right agar lebih ke kiri (semakin besar angka, semakin ke kiri) */
     right: 60%; 
