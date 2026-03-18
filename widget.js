@@ -2,13 +2,17 @@
     // --- KONFIGURASI ---
     const WORKER_URL = "https://betutu-ai-worker.betutubr.workers.dev/";
     const BOT_NAME = "BR Betutu Assistant";
-    const PRIMARY_COLOR = "#8B4513"; // Cokelat khas bumbu
+    const PRIMARY_COLOR = "#8B4513"; 
 
-    // 1. Tambahkan CSS langsung ke halaman
+    // 1. Tambahkan CSS
     const style = document.createElement('style');
     style.innerHTML = `
         #betutu-chat-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif; }
-        #chat-button { width: 60px; height: 60px; background: ${PRIMARY_COLOR}; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        #chat-button { 
+            width: 60px; height: 60px; background: ${PRIMARY_COLOR}; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; 
+        }
         #chat-button:hover { transform: scale(1.1); }
         #chat-window { display: none; width: 350px; height: 450px; background: white; border-radius: 15px; flex-direction: column; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border: 1px solid #eee; margin-bottom: 15px; }
         #chat-header { background: ${PRIMARY_COLOR}; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
@@ -19,6 +23,9 @@
         #chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
         #chat-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 8px 15px; outline: none; font-size: 14px; }
         #chat-send { background: ${PRIMARY_COLOR}; color: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; }
+        
+        /* Ikon Chat CS Baru (SVG) */
+        .icon-cs { width: 30px; height: 30px; fill: white; }
     `;
     document.head.appendChild(style);
 
@@ -28,19 +35,19 @@
     wrapper.innerHTML = `
         <div id="chat-window">
             <div id="chat-header">
-                <span>🌶️ ${BOT_NAME}</span>
+                <span>💬 ${BOT_NAME}</span>
                 <span id="chat-close" style="cursor:pointer">×</span>
             </div>
             <div id="chat-messages">
-                <div class="msg msg-bot">Halo kak 😊. Ada yang bisa saya bantu seputar BR Bumbu Betutu?</div>
+                <div class="msg msg-bot">Halo kak 😊. Ada yang bisa saya bantu seputar BR Bumbu Betutu? Silakan tanya harga, ongkir, atau cara order ya.</div>
             </div>
             <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Tanya harga atau cara masak...">
+                <input type="text" id="chat-input" placeholder="Ketik pesan di sini...">
                 <button id="chat-send">➤</button>
             </div>
         </div>
         <div id="chat-button">
-            <span style="font-size: 30px;">🌶️</span>
+            <svg class="icon-cs" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
         </div>
     `;
     document.body.appendChild(wrapper);
@@ -59,14 +66,9 @@
     async function handleSend() {
         const text = input.value.trim();
         if (!text) return;
-
-        // Tambah pesan user ke UI
         addMessage(text, 'user');
         input.value = '';
-
-        // Efek loading sederhana
-        const loadingMsg = addMessage('Sedang mengetik...', 'bot');
-
+        const loadingMsg = addMessage('...', 'bot');
         try {
             const res = await fetch(WORKER_URL, {
                 method: 'POST',
@@ -74,13 +76,11 @@
                 body: JSON.stringify({ message: text })
             });
             const data = await res.json();
-            
-            // Hapus loading, tambah jawaban asli
             msgBox.removeChild(loadingMsg);
             addMessage(data.response || "Maaf kak, sistem sedang sibuk 😊", 'bot');
         } catch (e) {
             msgBox.removeChild(loadingMsg);
-            addMessage("Maaf kak, jaringan sibuk. Coba lagi nanti ya 😊", 'bot');
+            addMessage("Maaf kak, jaringan sibuk 😊", 'bot');
         }
     }
 
