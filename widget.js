@@ -17,14 +17,13 @@
         #chat-window { display: none; width: 350px; height: 450px; background: white; border-radius: 15px; flex-direction: column; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border: 1px solid #eee; margin-bottom: 15px; }
         #chat-header { background: ${PRIMARY_COLOR}; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         #chat-messages { flex: 1; padding: 15px; overflow-y: auto; background: #fdfaf7; display: flex; flex-direction: column; gap: 10px; }
-        .msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 14px; line-height: 1.4; }
+        .msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 14px; line-height: 1.4; word-wrap: break-word; }
         .msg-user { align-self: flex-end; background: ${PRIMARY_COLOR}; color: white; border-bottom-right-radius: 2px; }
         .msg-bot { align-self: flex-start; background: white; color: #333; border: 1px solid #eee; border-bottom-left-radius: 2px; }
+        .msg-bot a { color: #007bff; text-decoration: underline; font-weight: bold; } /* Gaya Link Biru */
         #chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
         #chat-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 8px 15px; outline: none; font-size: 14px; }
         #chat-send { background: ${PRIMARY_COLOR}; color: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; }
-        
-        /* Ikon Chat CS Baru (SVG) */
         .icon-cs { width: 30px; height: 30px; fill: white; }
     `;
     document.head.appendChild(style);
@@ -52,7 +51,6 @@
     `;
     document.body.appendChild(wrapper);
 
-    // 3. Logika Interaksi
     const btn = document.getElementById('chat-button');
     const win = document.getElementById('chat-window');
     const close = document.getElementById('chat-close');
@@ -62,6 +60,12 @@
 
     btn.onclick = () => { win.style.display = 'flex'; btn.style.display = 'none'; };
     close.onclick = () => { win.style.display = 'none'; btn.style.display = 'flex'; };
+
+    // Fungsi untuk mengubah teks URL menjadi Link HTML yang bisa diklik
+    function linkify(text) {
+        const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+    }
 
     async function handleSend() {
         const text = input.value.trim();
@@ -87,7 +91,14 @@
     function addMessage(text, side) {
         const div = document.createElement('div');
         div.className = `msg msg-${side}`;
-        div.innerText = text;
+        
+        if (side === 'bot') {
+            // Gunakan innerHTML + linkify agar link bisa diklik
+            div.innerHTML = linkify(text);
+        } else {
+            div.innerText = text;
+        }
+        
         msgBox.appendChild(div);
         msgBox.scrollTop = msgBox.scrollHeight;
         return div;
