@@ -20,68 +20,41 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== 2. HEADER (PERBAIKAN 1) ========== */
+/* ========== 2. HEADER ========== */
 header {
-    position: fixed; width: 100%; top: 0; z-index: 100;
+    position: fixed; width: 100%; top: 0; z-index: 1000;
     background: rgba(15, 15, 15, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 2px solid var(--accent-gold);
     padding: 10px 20px;
-    /* Rata kiri total */
     display: flex; align-items: center; justify-content: flex-start;
 }
 
-.brand-wrapper {
-    display: flex; align-items: center; 
-    gap: 15px; /* Jarak rapat antara logo dan teks */
-}
-
-.logo-container { display: flex; align-items: center; }
-
-.header-logo { 
-    height: 50px; width: auto; 
-    border-radius: 50%; /* Memastikan logo bulat sempurna */
-}
-
-.header-brand-name {
-    font-weight: 800; 
-    color: var(--accent-gold);
-    letter-spacing: 0.5px; 
-    text-transform: uppercase;
-    /* Tinggi huruf disamakan secara visual dengan logo */
-    font-size: 1.5rem; 
-    line-height: 1;
-    margin: 0;
-}
+.brand-wrapper { display: flex; align-items: center; gap: 15px; }
+.header-logo { height: 50px; width: auto; border-radius: 50%; }
+.header-brand-name { font-weight: 800; color: var(--accent-gold); text-transform: uppercase; font-size: 1.5rem; line-height: 1; }
 
 /* ========== 3. HERO SECTION ========== */
 .hero {
-    padding-top: 100px; padding-bottom: 60px;
+    padding-top: 120px; /* Ditambah agar tidak tertutup header */
+    padding-bottom: 60px;
     padding-left: 20px; padding-right: 20px;
 }
 
 .hero-carousel {
-    width: 100%; max-width: 800px; height: 300px;
+    width: 100%; max-width: 800px; height: 350px;
     margin: 0 auto 30px auto;
     border-radius: 15px; border: 2px solid var(--accent-gold);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
     overflow: hidden;
 }
 
 .swiper-slide { display: flex; justify-content: center; align-items: center; background: #000; }
 .carousel-img { width: 100%; height: 100%; object-fit: cover; }
 
-.hero-title {
-    font-size: 2.2rem; color: var(--accent-gold);
-    margin-bottom: 1rem; font-weight: 800;
-}
+.hero-title { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 1rem; font-weight: 800; }
+.hero-desc { max-width: 700px; margin: 0 auto 2rem auto; color: var(--text-gold); font-size: 1.1rem; }
 
-.hero-desc {
-    max-width: 700px; margin: 0 auto 2rem auto;
-    color: var(--text-gold); font-size: 1.1rem;
-}
-
-/* ========== 4. BAGIAN VISUAL (PERBAIKAN 2 & 3) ========== */
+/* ========== 4. BAGIAN VISUAL & REVEAL ========== */
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -98,56 +71,27 @@ header {
 }
 
 .info-visual { flex: 1; min-width: 300px; }
+.dual-images-container { position: relative; height: 400px; display: flex; justify-content: center; }
+.dual-img { border-radius: 1rem; position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-/* Container Gambar Desktop (Default) */
-.dual-images-container {
-    position: relative; height: 350px; display: flex; justify-content: center;
-}
-
-.dual-img {
-    border-radius: 1rem; position: absolute;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-}
-
-/* Tampilan Desktop */
-.main-betutu {
-    width: 80%; max-width: 300px; z-index: 1;
-    border: 2px solid var(--accent-gold); top: 0;
-}
-.sachet-betutu {
-    width: 50%; max-width: 180px; z-index: 2;
-    bottom: 20px; right: 35%;
-    border: none;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
-}
-
-.sachet-caption {
-    margin-top: 20px; 
-    color: var(--accent-gold); 
-    font-style: italic; 
-    font-size: 1rem; /* Default Desktop */
+.main-betutu { width: 80%; max-width: 300px; z-index: 1; border: 2px solid var(--accent-gold); top: 0; }
+.sachet-betutu { 
+    width: 50%; max-width: 180px; z-index: 2; 
+    bottom: 40px; right: 20%; 
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6)); 
 }
 
 /* ========== 5. CARDS & MARKETPLACE ========== */
 .info-grid { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1.5rem; }
-
-.card {
-    background: var(--card-dark); padding: 1.5rem;
-    border-radius: 1rem; border: 1px solid #333;
-    text-align: left;
-}
+.card { background: var(--card-dark); padding: 1.5rem; border-radius: 1rem; border: 1px solid #333; text-align: left; }
 .card-content h3 { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 5px; }
-.card-content p { font-size: 0.95rem; color: #ccc; margin: 0; }
+.card-content p { font-size: 0.95rem; color: #ccc; }
 
 .marketplace-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 20px;
+    gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 40px;
 }
-.card-market {
-    background: var(--card-dark); padding: 2rem;
-    border-radius: 1rem; border: 1px solid #333;
-}
+.card-market { background: var(--card-dark); padding: 2rem; border-radius: 1rem; border: 1px solid #333; }
 .btn-gold-market {
     background: linear-gradient(135deg, var(--accent-gold), #aa8a2e);
     color: #000; text-decoration: none; padding: 0.7rem 1.5rem;
@@ -156,76 +100,28 @@ header {
 
 /* ========== 6. FOOTER ========== */
 footer { padding: 50px 20px; border-top: 1px solid #333; background: #0a0a0a; margin-top: 80px; }
-.gold-text { color: var(--accent-gold); margin-bottom: 1rem; letter-spacing: 1px; }
+.gold-text { color: var(--accent-gold); margin-bottom: 1rem; }
 .footer-bottom { margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; font-size: 0.85rem; color: #666; }
 
-/* ========== 7. TOMBOL FLOATING (PERBAIKAN 4) ========== */
+/* ========== 7. FLOATING BUTTONS (SINKRONISASI) ========== */
+/* Tombol WA lama digeser ke kiri sedikit agar tidak menumpuk dengan Chatbox AI */
 .btn-floating-cs {
-    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    position: fixed; bottom: 30px; left: 30px; z-index: 999;
     background: linear-gradient(135deg, #25d366, #128c7e);
     color: white; text-decoration: none;
-    padding: 12px 25px; border-radius: 50px;
+    padding: 10px 20px; border-radius: 50px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     display: flex; align-items: center; gap: 10px;
-    
-    /* Ubah Font jadi Bold */
-    font-weight: 900; 
-    font-size: 1.1rem;
+    font-weight: 900; font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    
-    transition: transform 0.3s ease;
-    animation: floatPulse 2s infinite;
-}
-.btn-floating-cs:hover { transform: scale(1.05) translateY(-5px); }
-
-@keyframes floatPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
 }
 
-/* ========== 8. RESPONSIVE MOBILE (PERBAIKAN 2 & 3 LANJUTAN) ========== */
+/* ========== 8. RESPONSIVE MOBILE ========== */
 @media (max-width: 768px) {
-    /* Header: Sesuaikan ukuran font di HP */
-    .header-brand-name {
-        font-size: 1.1rem; /* Sedikit lebih kecil agar muat di layar sempit */
-    }
-
-    /* Reset Layout Gambar untuk Mobile */
-    .dual-images-container {
-        height: auto; /* Hilangkan tinggi fix */
-        flex-direction: column; /* Tumpuk ke bawah */
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .dual-img {
-        position: relative; /* Hilangkan posisi absolute */
-        top: auto; bottom: auto; right: auto; left: auto;
-    }
-
-    .main-betutu {
-        width: 100%; /* Lebar penuh */
-        max-width: 100%;
-        margin-bottom: 20px; /* Jarak ke sachet */
-    }
-
-    /* SACHET BESAR DI HP */
-    .sachet-betutu {
-        width: 100%; /* Maksimal lebar layar */
-        max-width: 400px; /* Batas agar tidak terlalu raksasa di tablet */
-        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-    }
-
-    /* Font Caption Lebih Besar */
-    .sachet-caption {
-        font-size: 1.3rem; /* Diperbesar agar mudah terbaca */
-        font-weight: 600;
-        margin-top: 15px;
-        color: #fff; /* Ubah putih agar kontras di layar kecil */
-    }
-
-    .hero-title { font-size: 1.8rem; }
-    .btn-floating-cs { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 1rem; }
+    .header-brand-name { font-size: 1.1rem; }
+    .hero { padding-top: 100px; }
+    .hero-carousel { height: 250px; }
+    .dual-images-container { height: auto; flex-direction: column; align-items: center; }
+    .dual-img { position: relative; width: 90%; max-width: 300px; margin-bottom: 15px; right: auto; bottom: auto; }
+    .btn-floating-cs { bottom: 20px; left: 20px; padding: 8px 15px; font-size: 0.8rem; }
 }
