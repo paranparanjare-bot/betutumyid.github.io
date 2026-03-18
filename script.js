@@ -1,20 +1,4 @@
-// 1. PENGATURAN AUTO SCROLL (LEBIH HALUS)
-function startAutoScroll(speed) {
-    // Speed ditingkatkan agar tidak memberatkan browser saat memuat AI
-    let scrollInterval = setInterval(() => {
-        window.scrollBy(0, 1); 
-        
-        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-            clearInterval(scrollInterval);
-        }
-    }, speed);
-
-    const stopScroll = () => clearInterval(scrollInterval);
-    window.addEventListener('wheel', stopScroll);
-    window.addEventListener('touchstart', stopScroll);
-}
-
-// 2. INISIALISASI SWIPER
+// 1. INISIALISASI SWIPER (Carousel)
 const swiper = new Swiper(".mySwiper", {
     loop: true,
     speed: 800,
@@ -23,33 +7,14 @@ const swiper = new Swiper(".mySwiper", {
         clickable: true,
     },
     autoplay: {
-        delay: 3000, // Diperlambat sedikit agar lebih elegan
+        delay: 3000,
         disableOnInteraction: false,
     },
 });
 
-// 3. LOGIKA SCROLL REVEAL
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.reveal').forEach(section => {
-    observer.observe(section);
-});
-
-// 4. JALANKAN SAAT LOAD
+// 2. FUNGSI PENGECEKAN KONTEN (Memastikan main muncul)
 window.addEventListener('load', () => {
-    // Beri jeda 1 detik sebelum auto-scroll agar widget AI siap lebih dulu
-    setTimeout(() => {
-        startAutoScroll(40); // Kecepatan sedang agar konten tidak terlihat "loncat"
-    }, 1000);
+    console.log("Website Loaded - BR Bumbu Betutu");
+    // Paksa scroll ke atas saat refresh
+    window.scrollTo(0, 0);
 });
