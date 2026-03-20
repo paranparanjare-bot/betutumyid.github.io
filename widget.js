@@ -4,57 +4,80 @@
     const BOT_NAME = "BR Betutu Assistant";
     const PRIMARY_COLOR = "#8B4513"; 
 
-    // 1. Tambahkan CSS
+    // 1. Tambahkan CSS dengan Kendali Penuh
     const style = document.createElement('style');
     style.innerHTML = `
         #betutu-chat-wrapper { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            z-index: 9999; 
-            font-family: 'Segoe UI', sans-serif; 
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            position: fixed !important; 
+            bottom: 20px !important; 
+            right: 20px !important; 
+            left: 20px !important; /* Paksa margin kiri 20px */
+            z-index: 999999 !important; 
+            font-family: 'Segoe UI', Arial, sans-serif !important; 
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-end !important;
+            pointer-events: none; /* Biar tidak menghalangi klik di luar tombol */
         }
+        
+        #chat-button, #chat-window { pointer-events: auto; } /* Aktifkan klik kembali */
+
         #chat-button { 
             width: 60px; height: 60px; background: ${PRIMARY_COLOR}; border-radius: 50%; 
             display: flex; align-items: center; justify-content: center; cursor: pointer; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.3s; 
         }
-        #chat-button:hover { transform: scale(1.1); }
         
         #chat-window { 
             display: none; 
-            width: 350px; 
-            height: 450px; 
+            width: 380px; /* Lebar default PC */
+            max-width: 100% !important;
+            height: 500px; 
             background: white; 
             border-radius: 15px; 
             flex-direction: column; 
             overflow: hidden; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
-            border: 1px solid #eee; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border: 1px solid #ddd; 
             margin-bottom: 15px; 
-            max-width: 100%;
         }
         
-        #chat-header { background: ${PRIMARY_COLOR}; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        #chat-header { 
+            background: ${PRIMARY_COLOR}; color: white; padding: 15px; 
+            font-weight: bold; display: flex; justify-content: space-between; align-items: center; 
+        }
+        
+        /* TOMBOL CLOSE (X) REVISI */
+        #chat-close { 
+            cursor: pointer; 
+            font-size: 32px !important; /* Jauh lebih besar */
+            color: #ff4d4d !important; /* Warna merah terang */
+            font-weight: 900 !important;
+            line-height: 1;
+            padding: 0 5px;
+            transition: color 0.2s;
+        }
+        #chat-close:hover { color: #ff0000 !important; }
+
         #chat-messages { flex: 1; padding: 15px; overflow-y: auto; background: #fdfaf7; display: flex; flex-direction: column; gap: 10px; }
-        .msg { max-width: 85%; padding: 10px 14px; border-radius: 15px; font-size: 14px; line-height: 1.4; word-wrap: break-word; }
+        .msg { max-width: 85%; padding: 10px 14px; border-radius: 15px; font-size: 14px; line-height: 1.4; }
         .msg-user { align-self: flex-end; background: ${PRIMARY_COLOR}; color: white; border-bottom-right-radius: 2px; }
         .msg-bot { align-self: flex-start; background: white; color: #333; border: 1px solid #eee; border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .msg-bot a { color: #007bff; text-decoration: underline; font-weight: bold; }
         
         #chat-input-area { padding: 12px; border-top: 1px solid #eee; display: flex; gap: 8px; background: white; }
-        #chat-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; font-size: 14px; }
-        #chat-send { background: ${PRIMARY_COLOR}; color: white; border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .icon-cs { width: 30px; height: 30px; fill: white; }
+        #chat-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 10px 15px; outline: none; font-size: 16px; } /* Font 16px biar tidak zoom otomatis di iPhone */
+        #chat-send { background: ${PRIMARY_COLOR}; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; }
 
-        /* Responsif untuk Mobile */
-        @media (max-width: 600px) {
+        /* KOREKSI MOBILE TOTAL */
+        @media (max-width: 768px) {
+            #betutu-chat-wrapper {
+                right: 20px !important;
+                left: 20px !important;
+                width: calc(100% - 40px) !important;
+            }
             #chat-window {
-                width: 100% !important;
-                height: 400px;
+                width: 100% !important; /* Paksa selebar wrapper (seperti carousel) */
+                height: 450px !important;
             }
         }
     `;
@@ -67,7 +90,7 @@
         <div id="chat-window">
             <div id="chat-header">
                 <span>💬 ${BOT_NAME}</span>
-                <span id="chat-close" style="cursor:pointer; font-size: 24px;">&times;</span>
+                <span id="chat-close" title="Tutup Chat">&times;</span>
             </div>
             <div id="chat-messages">
                 <div class="msg msg-bot">Halo kak 😊. Ada yang bisa saya bantu seputar BR Bumbu Betutu? Silakan tanya harga, ongkir, atau cara order ya.</div>
@@ -78,7 +101,7 @@
             </div>
         </div>
         <div id="chat-button">
-            <svg class="icon-cs" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <svg style="width:30px;height:30px;fill:white" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
         </div>
     `;
     document.body.appendChild(wrapper);
@@ -92,11 +115,6 @@
 
     btn.onclick = () => { win.style.display = 'flex'; btn.style.display = 'none'; };
     close.onclick = () => { win.style.display = 'none'; btn.style.display = 'flex'; };
-
-    function linkify(text) {
-        const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-        return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
-    }
 
     async function handleSend() {
         const text = input.value.trim();
@@ -122,11 +140,7 @@
     function addMessage(text, side) {
         const div = document.createElement('div');
         div.className = `msg msg-${side}`;
-        if (side === 'bot') {
-            div.innerHTML = linkify(text);
-        } else {
-            div.innerText = text;
-        }
+        div.innerHTML = side === 'bot' ? text.replace(/(\bhttps?:\/\/\S+)/ig, '<a href="$1" target="_blank">$1</a>') : text;
         msgBox.appendChild(div);
         msgBox.scrollTop = msgBox.scrollHeight;
         return div;
