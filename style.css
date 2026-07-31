@@ -57,6 +57,24 @@ header {
 .hero-desc { max-width: 700px; margin: 0 auto 2rem auto; color: var(--text-gold); font-size: 1.1rem; }
 
 /* ========== 4. CONTENT VISIBILITY ========== */
+#panduan {
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.3);
+}
+
+.panduan-content {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ccc;
+}
+
+.panduan-list {
+    padding-left: 20px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
 .content-visible {
     opacity: 1 !important;
     transform: none !important;
@@ -174,6 +192,23 @@ header {
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
 
+/* ========== 5c. RESEP ========== */
+.resep-tips {
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.card-market h3 {
+    color: var(--accent-gold);
+}
+
+.card-market p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
 /* ========== 6. LOKASI KAMI ========== */
 .lokasi-container {
     max-width: 800px;
@@ -233,10 +268,34 @@ header {
     align-self: center;
 }
 
+/* ========== 6b. LEGAL ========== */
+#legal {
+    background: #1a1a1a;
+    padding: 40px 20px;
+    border-top: 2px solid var(--accent-gold);
+}
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ccc;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.legal-item {
+    margin-bottom: 30px;
+}
+
+.legal-item h3 {
+    color: var(--accent-gold);
+}
+
 /* ========== 7. FOOTER ========== */
 footer { padding: 50px 20px; border-top: 1px solid #333; background: #0a0a0a; margin-top: 80px; }
 .gold-text { color: var(--accent-gold); margin-bottom: 1rem; }
 .footer-bottom { margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; font-size: 0.85rem; color: #666; }
+.footer-pirt { margin-bottom: 5px; }
 
 /* ========== 8. RESPONSIVE MOBILE ========== */
 @media (max-width: 768px) {
