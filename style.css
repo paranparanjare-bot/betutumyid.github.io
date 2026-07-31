@@ -174,12 +174,71 @@ header {
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
 
-/* ========== 6. FOOTER ========== */
+/* ========== 6. LOKASI KAMI ========== */
+.lokasi-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-dark);
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.lokasi-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+}
+.lokasi-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    object-fit: cover;
+}
+.lokasi-name {
+    color: var(--accent-gold);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+.lokasi-address {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.lokasi-note {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.lokasi-map-frame {
+    width: 100%;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+.lokasi-map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.lokasi-btn {
+    align-self: center;
+}
+
+/* ========== 7. FOOTER ========== */
 footer { padding: 50px 20px; border-top: 1px solid #333; background: #0a0a0a; margin-top: 80px; }
 .gold-text { color: var(--accent-gold); margin-bottom: 1rem; }
 .footer-bottom { margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; font-size: 0.85rem; color: #666; }
 
-/* ========== 7. RESPONSIVE MOBILE ========== */
+/* ========== 8. RESPONSIVE MOBILE ========== */
 @media (max-width: 768px) {
     .header-brand-name { font-size: 1.1rem; }
     .hero { padding-top: 100px; }
@@ -189,4 +248,8 @@ footer { padding: 50px 20px; border-top: 1px solid #333; background: #0a0a0a; ma
     .wa-cta { padding: 2rem 1.2rem; }
     .wa-cta-title { font-size: 1.3rem; }
     .wa-cta-desc { font-size: 0.9rem; }
+    
+    .lokasi-container { padding: 1.5rem 1rem; }
+    .lokasi-info { flex-direction: column; text-align: center; gap: 1rem; }
+    .lokasi-map-frame { height: 250px; }
 }
